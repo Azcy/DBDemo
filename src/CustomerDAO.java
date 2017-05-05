@@ -10,17 +10,12 @@ public class CustomerDAO {
      * 顾客的增、删、改、查类
      *
      * */
-    //驱动
-    String driver="com.mysql.jdbc.Driver";
-    //连接数据库语句
-    String str="jdbc:mysql://localhost:3306/myzcy";
+
     /*添加顾客*/
     public void addCustomer(Customer cus){
         try {
-            //加载驱动
-            Class.forName(driver);
-           //建立连接
-            Connection con= DriverManager.getConnection(str,"root","root");
+            //建立连接
+            Connection con=new CustomerDAO().connect();
             //sql语句
             String sql="insert into customers values(?,?,?)";
             //创建操作命令对象
@@ -43,10 +38,8 @@ public class CustomerDAO {
     /*删除顾客*/
     public void deleteCustomerByID(String cusid){
         try {
-            //加载驱动
-            Class.forName(driver);
             //建立连接
-            Connection con= DriverManager.getConnection(str,"root","root");
+            Connection con=new CustomerDAO().connect();
             //sql语句
             String sql="delete from customers where customerId=?";
             PreparedStatement cmd=con.prepareStatement(sql);
@@ -62,9 +55,8 @@ public class CustomerDAO {
     public ArrayList<Customer> allCustomers(){
         ArrayList<Customer> list=new ArrayList<Customer>();
         try {
-            Class.forName(driver);
-            //建立连接
-            Connection con= DriverManager.getConnection(str,"root","root");
+           //建立连接
+            Connection con=new CustomerDAO().connect();
             //创建命令对象
             Statement cmd=con.createStatement();
             ResultSet rs=cmd.executeQuery("SELECT * FROM customers");
@@ -81,5 +73,18 @@ public class CustomerDAO {
         }catch (Exception e){
         }
         return list;
+    }
+    /*与数据库连接*/
+    public Connection connect(){
+        Connection con = null;
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            String sql="jdbc:mysql://localhost:3306/myzcy";
+             con=DriverManager.getConnection(sql,"root","root");
+        }  catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        return con; 
     }
 }
