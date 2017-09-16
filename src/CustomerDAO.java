@@ -79,8 +79,8 @@ public class CustomerDAO {
         Connection con = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            String sql="jdbc:mysql://localhost:3306/myzcy";
-             con=DriverManager.getConnection(sql,"root","root");
+            String sql="jdbc:mysql://rm-wz9o3dj7rv8xeh154o.mysql.rds.aliyuncs.com:3306/myzcy";
+             con=DriverManager.getConnection(sql,"root","Kowj728138");
         }  catch (Exception e) {
             e.printStackTrace();
         }

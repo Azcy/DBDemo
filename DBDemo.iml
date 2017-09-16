@@ -16,5 +16,10 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="mysql-connector-java-5.1.43-bin" level="project" />
+    <orderEntry type="library" name="c3p0-0.9.5.2" level="project" />
+    <orderEntry type="library" name="mchange-commons-java-0.2.11" level="project" />
+    <orderEntry type="library" name="commons-dbcp2-2.1.1" level="project" />
+    <orderEntry type="library" name="commons-pool2-2.4.2" level="project" />
   </component>
 </module>
